@@ -29,7 +29,7 @@ const MedicalInformationDog = ({ pet }) => {
       <TextCardInformation
         text={t('lastVisitVet')}
         icon={<FaCalendar size={18} />}
-        value={moment(getLastVisitVet).format('L')}
+        value={getLastVisitVet ? moment(getLastVisitVet).format('L') : 'N/A'}
       />
       {pet.getEmailUserVet && (
         <TextCardInformation

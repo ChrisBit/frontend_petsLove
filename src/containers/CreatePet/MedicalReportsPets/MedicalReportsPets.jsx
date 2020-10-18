@@ -14,7 +14,7 @@ const MedicalReportsPets = ({ createPetStore }) => {
   if (createPetStore.pet.category.value === 'cat') {
     return <FormCatsMedicalReportsPets createPetStore={createPetStore} />
   }
-  if (createPetStore.pet.category.value === 'cat') {
+  if (createPetStore.pet.category.value === 'dog') {
     return <FormDogsMedicalReportsPets createPetStore={createPetStore} />
   }
 

@@ -64,7 +64,7 @@ const InformationPet = ({ pet }) => {
         <TextCardInformation
           text={t('common:birthday')}
           icon={<FaRegCalendarAlt size={20} />}
-          value={moment(getBirthday).format('L')}
+          value={getBirthday ? moment(getBirthday).format('L') : 'N/A'}
         />
         <TextCardInformation
           value={t(getCategory)}

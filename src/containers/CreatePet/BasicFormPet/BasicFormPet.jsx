@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import moment from 'moment'
 import { observer } from 'mobx-react'
 import UserContext from 'Context/UserContext'
 import InputUploadImage from 'components/commons/InputUploadImage'
@@ -168,7 +167,7 @@ const BasicFormPet = ({ createPetStore, inputUploadImageStore }) => {
         <InputDate
           label={t('birthdate')}
           handleDateChange={handleDateBirthday}
-          value={moment(getBirthday).format('L')}
+          value={getBirthday}
         />
       </div>
       <div className={styles.colums}>

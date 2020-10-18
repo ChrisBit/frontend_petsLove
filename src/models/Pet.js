@@ -314,7 +314,7 @@ class Pet {
 
   get getRabiesVaccine() {
     if (this.category.value === 'cat') {
-      return this.medicalInformationCat.getLastVisitVet
+      return this.medicalInformationCat.getRabiesVaccine
     }
     if (this.category.value === 'dog') {
       return this.medicalInformationDog.getRabiesVaccine

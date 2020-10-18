@@ -27,7 +27,7 @@ const MedicalInformationCat = ({ pet }) => {
       <TextCardInformation
         text={t('lastVisitVet')}
         icon={<FaRegCalendarAlt size={20} />}
-        value={moment(getLastVisitVet).format('L')}
+        value={getLastVisitVet ? moment(getLastVisitVet).format('L') : 'N/A'}
       />
       {pet.getEmailUserVet && (
         <TextCardInformation

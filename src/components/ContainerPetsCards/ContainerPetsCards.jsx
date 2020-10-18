@@ -18,13 +18,11 @@ const ContainerPetsCards = ({ pets, isUserAdopt, isLoading, handleDelete }) => {
   const { authStore } = rootStore
 
   const goToPet = useCallback(id => {
-    history.push(`/`)
-    history.push(`profile-pets/${id}`)
+    history.push(`/profile-pets/${id}`)
   }, [])
 
   const handleEdit = useCallback(id => {
-    history.push(`/`)
-    history.push(`edit-pet/${id}`)
+    history.push(`/edit-pet/${id}`)
   }, [])
 
   if (isLoading) {

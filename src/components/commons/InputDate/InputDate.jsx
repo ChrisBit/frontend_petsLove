@@ -6,18 +6,22 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Label from 'components/commons/Label'
 import { BiCalendarHeart } from 'react-icons/bi'
+import moment from 'moment'
 import styles from './inputDate.scss'
 
 const InputDate = ({ label, handleDateChange, value, size }) => {
-  const [selectedDate, handleDate] = useState(new Date())
+  const [selectedDate, handleDate] = useState(null)
+  console.log({ label, handleDateChange, value, size })
 
   const CustomInput = React.forwardRef((props, ref) => (
     <button ref={ref} type="button" className={styles.input} onClick={props.onClick}>
       {props.value}
     </button>
   ))
+
   useEffect(() => {
-    handleDateChange(selectedDate)
+    console.log(selectedDate || value)
+    handleDateChange(selectedDate || value)
   }, [selectedDate])
 
   return (
@@ -28,7 +32,7 @@ const InputDate = ({ label, handleDateChange, value, size }) => {
         style={{ width: size ? `${size} px` : '100%' }}
       >
         <DatePicker
-          value={value}
+          value={moment(value).format('L')}
           showYearDropdown
           dateFormat="dd/MM/yyyy"
           selected={selectedDate}

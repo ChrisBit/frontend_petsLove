@@ -11,7 +11,6 @@ import styles from './tabViewInformationPet.scss'
 const TabViewInformationPet = ({ pet, history }) => {
   const [step, setStep] = useState(1)
   const { t } = useTranslation()
-  console.log(pet.getNotes)
   return (
     <div className={styles.containerCard}>
       <div className={styles.contactInformation}>

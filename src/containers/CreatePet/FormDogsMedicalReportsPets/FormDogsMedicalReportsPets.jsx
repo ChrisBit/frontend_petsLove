@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import CreatePetStore from 'stores/CreatePetStore'
 import InputCheckbox from 'components/commons/InputCheckbox'
 import { useTranslation } from 'react-i18next'
@@ -81,7 +80,7 @@ const FormDogsMedicalReportsPets = ({ createPetStore }) => {
         <InputDate
           label={t('labelVisitVet')}
           handleDateChange={handleDateChange}
-          value={moment(getLastVisitVet).format('L')}
+          value={getLastVisitVet}
         />
       </div>
       <div className={styles.colums}>
