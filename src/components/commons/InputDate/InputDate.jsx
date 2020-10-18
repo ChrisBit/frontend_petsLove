@@ -19,8 +19,7 @@ const InputDate = ({ label, handleDateChange, value, size }) => {
   ))
 
   useEffect(() => {
-    // If no Date is selected null, use value. If the result is empty string use null.
-    handleDateChange(selectedDate || value || null)
+    handleDateChange(selectedDate || value)
   }, [selectedDate])
 
   return (
@@ -45,12 +44,14 @@ const InputDate = ({ label, handleDateChange, value, size }) => {
 }
 
 InputDate.propTypes = {
+  handleDateChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
   label: PropTypes.string,
   size: PropTypes.number,
-  handleDateChange: PropTypes.func.isRequired,
 }
 
 InputDate.defaultProps = {
+  value: null,
   label: '',
   size: 0,
 }
