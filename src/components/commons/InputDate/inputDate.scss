@@ -1,4 +1,4 @@
-@import 'styles/variable';
+@import "styles/variable";
 
 .myDatePickerWrapper > div {
   display: block !important;
@@ -32,8 +32,9 @@ input:focus {
   background-color: white;
   padding: 10px 10px 10px 10px;
   border-radius: 4px;
-  font-family: 'Noto Sans HK', sans-serif;
+  font-family: "Noto Sans HK", sans-serif;
   box-sizing: border-box;
+  min-height: 38px;
 
   &:focus {
     outline: 0;
@@ -48,7 +49,7 @@ input:focus {
 
   &::placeholder {
     font-size: 14px;
-    font-family: 'Noto Sans HK', sans-serif;
+    font-family: "Noto Sans HK", sans-serif;
   }
 }
 

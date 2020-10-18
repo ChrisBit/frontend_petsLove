@@ -11,7 +11,6 @@ import styles from './inputDate.scss'
 
 const InputDate = ({ label, handleDateChange, value, size }) => {
   const [selectedDate, handleDate] = useState(null)
-  console.log({ label, handleDateChange, value, size })
 
   const CustomInput = React.forwardRef((props, ref) => (
     <button ref={ref} type="button" className={styles.input} onClick={props.onClick}>
@@ -20,8 +19,8 @@ const InputDate = ({ label, handleDateChange, value, size }) => {
   ))
 
   useEffect(() => {
-    console.log(selectedDate || value)
-    handleDateChange(selectedDate || value)
+    // If no Date is selected null, use value. If the result is empty string use null.
+    handleDateChange(selectedDate || value || null)
   }, [selectedDate])
 
   return (
@@ -32,7 +31,7 @@ const InputDate = ({ label, handleDateChange, value, size }) => {
         style={{ width: size ? `${size} px` : '100%' }}
       >
         <DatePicker
-          value={moment(value).format('L')}
+          value={value ? moment(value).format('L') : ''}
           showYearDropdown
           dateFormat="dd/MM/yyyy"
           selected={selectedDate}
