@@ -35,8 +35,8 @@ const FormLogin = () => {
 
   const { isLoading, isErrorLogin, email, password } = rootStore.authStore
 
-  const keyPressedHandler = (event) =>  {
-    if(event.key === "Enter"){
+  const keyPressedHandler = event => {
+    if (event.key === 'Enter') {
       login()
     }
   }
@@ -56,7 +56,7 @@ const FormLogin = () => {
               value={email.value}
               handleChange={handleEmail}
               placeholder={t('login.email')}
-              onKeyPress={(event) => keyPressedHandler(event)}
+              onKeyPress={event => keyPressedHandler(event)}
             />
           </div>
           <div className={styles.inputForm}>
@@ -72,15 +72,15 @@ const FormLogin = () => {
           <div className={styles.buttonLogin}>
             <Button handleClick={login} bigButton text={t('login.login')} />
           </div>
-          {/* <div className={styles.buttonSocialLogin}> */}
-          {/*  <ButtonLoginSocialMedia textButton="Facebook" socialButton="facebook" /> */}
-          {/*  <ButtonLoginSocialMedia textButton="Google" socialButton="google" /> */}
-          {/* </div> */}
+          <div className={styles.buttonSocialLogin}>
+            {/* <ButtonLoginSocialMedia textButton="Facebook" socialButton="facebook" />
+            <ButtonLoginSocialMedia textButton="Google" socialButton="google" /> */}
+          </div>
           <div className={styles.forgotPassword}>
             <Link to="forgot-password" className={styles.textForgot}>
               {t('login.forgotPassword')}
             </Link>
-            <Link to="register" className={styles.textSingIn}>
+            <Link to="register" className={styles.textSignIn}>
               {t('login.signUp')}
             </Link>
           </div>

@@ -8,7 +8,7 @@
   "assignUser": "Asignar adoptante",
   "labelWhereFoundPet": "¿Donde Fué encontrada?",
   "labelSelectTransit": "Asignar usuario de tránsito",
-  "placeHolderSelectTransit": "Selecciona un usuario...",
+  "placeHolderSelectTransit": "Designa un voluntario",
   "placeholderName": "Nombre de la mascota",
   "adopted": "¿La mascota fué adoptada?",
   "statusPet": "Estatus de la mascota",
@@ -74,14 +74,13 @@
     "isVaccinatedLeptospirosis": "¿Está vacunado contra la leptospirosis?",
     "isVaccinatedParainfluenza": "¿Está vacunado contra la parainfluenza?",
     "isVaccinatedHepatitis": "¿Está vacunado contra la hepatitis?",
-    "dogVaccinationForm": "Formulario de vacunas",
     "canineDistemper": "¿Está vacunado contra moquillo canino?"
   },
   "cat": {
-    "catVaccinationForm": "Formulario de vacunas para gatos",
     "felineFluVaccine": "¿Está vacunado contra gripe felina (Rinotraqueítis)?",
     "felineLeukemia": "¿Está vacunado contra leucemia felina?",
     "felineInfectiousPeritonitis": "¿Está vacinado contra Peritonitis infecciosa felina?"
   },
+  "vaccinationForm": "Formulario de vacunas",
   "last": "last"
 }
