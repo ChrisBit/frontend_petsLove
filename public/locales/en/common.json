@@ -14,6 +14,7 @@
   "wasNotCompleted": "This field was not completed",
   "notImage": "This pet has no images",
   "isRequired": "This field is required",
+  "invalidValue": "Field value is invalid",
   "category": "Type of pet",
   "petsCared": "Pets Cared",
   "basicInformation": "Basic information",

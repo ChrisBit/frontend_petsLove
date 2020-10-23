@@ -91,6 +91,7 @@ const BasicFormPet = ({ createPetStore, inputUploadImageStore }) => {
     getName,
     history,
     category,
+    birthday,
     getGender,
     getUrgent,
     getAdopted,
@@ -166,6 +167,7 @@ const BasicFormPet = ({ createPetStore, inputUploadImageStore }) => {
       <div className={styles.colums}>
         <InputDate
           label={t('birthdate')}
+          inputStore={birthday}
           handleDateChange={handleDateBirthday}
           value={getBirthday}
         />

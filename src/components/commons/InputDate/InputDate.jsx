@@ -6,13 +6,28 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Label from 'components/commons/Label'
 import { BiCalendarHeart } from 'react-icons/bi'
+import InputStore from 'stores/InputStore'
+import { useTranslation } from 'react-i18next'
 import styles from './inputDate.scss'
 
-const InputDate = ({ label, handleDateChange, value, size }) => {
+const InputDate = ({ label, handleDateChange, value, size, inputStore }) => {
   const [selectedDate, handleDate] = useState(null)
+  const { t } = useTranslation()
 
-  const CustomInput = React.forwardRef((props, ref) => (
-    <button ref={ref} type="button" className={styles.input} onClick={props.onClick}>
+  const onKeyPressHandler = e => {
+    if (e.key === 'Backspace' || e.key === 'Delete') {
+      handleDate(null)
+    }
+  }
+
+  const CustomButton = React.forwardRef((props, ref) => (
+    <button
+      ref={ref}
+      type="button"
+      className={styles.input}
+      onClick={props.onClick}
+      onKeyUp={e => onKeyPressHandler(e)}
+    >
       {props.value}
     </button>
   ))
@@ -30,28 +45,32 @@ const InputDate = ({ label, handleDateChange, value, size }) => {
       >
         <DatePicker
           showYearDropdown
+          isClearable
           dateFormat="dd/MM/yyyy"
           selected={value}
-          // customInput={React.cloneElement(<CustomInput />)}
+          customInput={React.cloneElement(<CustomButton />)}
           onChange={date => handleDate(date)}
         />
         <BiCalendarHeart size={20} className={c(styles.styleIconInputDate)} />
       </div>
+      {inputStore && <div className={styles.errorMessage}>{t(`${inputStore.errorMessage}`)}</div>}
     </>
   )
 }
 
 InputDate.propTypes = {
   handleDateChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date)]),
   label: PropTypes.string,
   size: PropTypes.number,
+  inputStore: PropTypes.instanceOf(InputStore),
 }
 
 InputDate.defaultProps = {
   value: null,
   label: '',
   size: 0,
+  inputStore: null,
 }
 
 export default observer(InputDate)

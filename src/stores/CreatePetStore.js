@@ -7,8 +7,10 @@ import AuthService from 'services/AuthService'
 import AsyncApiStore from 'stores/AsyncApiStore'
 import Utils from 'utils'
 import Pet from 'models/Pet'
+import * as moment from '../../node_modules/moment/moment'
 
 const REQUIRED = 'common:isRequired'
+const INVALID_VALUE = 'common:invalidValue'
 
 class CreatePetStore extends AsyncApiStore {
   constructor() {
@@ -250,7 +252,7 @@ class CreatePetStore extends AsyncApiStore {
     let isValidForm = true
     this.clearError()
 
-    const { name, category, gender, history, activityLevel } = this.pet
+    const { name, category, gender, history, activityLevel, birthday } = this.pet
 
     if (!name.value) {
       name.setError(true, REQUIRED)
@@ -282,12 +284,18 @@ class CreatePetStore extends AsyncApiStore {
       isValidForm = false
     }
 
+    if (!(birthday.value === null) && !moment(birthday.value).isValid()) {
+      birthday.setError(true, INVALID_VALUE)
+
+      isValidForm = false
+    }
+
     return isValidForm
   }
 
   @action
   clearError() {
-    const { name, category, gender, history, activityLevel, textAddress } = this.pet
+    const { name, category, gender, history, activityLevel, textAddress, birthday } = this.pet
 
     name.clearError()
     category.clearError()
@@ -295,6 +303,7 @@ class CreatePetStore extends AsyncApiStore {
     history.clearError()
     activityLevel.clearError()
     textAddress.clearError()
+    birthday.clearError()
   }
 }
 
