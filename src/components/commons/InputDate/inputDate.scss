@@ -1,8 +1,16 @@
 @import "styles/variable";
 
-.myDatePickerWrapper > div {
-  display: block !important;
-  width: 100%;
+.myDatePickerWrapper {
+  & > div {
+    display: block !important;
+    width: 100%;
+  }
+
+  &:hover {
+    svg {
+      color: rgb(153, 153, 153);
+    }
+  }
 }
 
 .containerDate {
@@ -12,11 +20,11 @@
 
 .styleIconInputDate {
   position: absolute;
-  right: 8px;
+  right: 11px;
   top: 10px;
-  width: 30px;
-  cursor: pointer;
-  opacity: 0.6;
+  width: 16px;
+  color: $borderPrimary;
+  pointer-events: none;
 }
 
 input:focus {
@@ -62,14 +70,4 @@ input:focus {
   margin-top: 5px;
   font-size: 10px;
   color: red;
-}
-
-.react-datepicker__close-icon {
-  right: 30px;
-}
-
-.react-datepicker__close-icon {
-  right: 11px;
-  top: 10px;
-  width: 15px;
 }

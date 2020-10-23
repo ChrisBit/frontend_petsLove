@@ -14,24 +14,6 @@ const InputDate = ({ label, handleDateChange, value, size, inputStore }) => {
   const [selectedDate, handleDate] = useState(null)
   const { t } = useTranslation()
 
-  const onKeyPressHandler = e => {
-    if (e.key === 'Backspace' || e.key === 'Delete') {
-      handleDate(null)
-    }
-  }
-
-  const CustomButton = React.forwardRef((props, ref) => (
-    <button
-      ref={ref}
-      type="button"
-      className={styles.input}
-      onClick={props.onClick}
-      onKeyUp={e => onKeyPressHandler(e)}
-    >
-      {props.value}
-    </button>
-  ))
-
   useEffect(() => {
     handleDateChange(selectedDate)
   }, [selectedDate])
@@ -48,10 +30,10 @@ const InputDate = ({ label, handleDateChange, value, size, inputStore }) => {
           isClearable
           dateFormat="dd/MM/yyyy"
           selected={value}
-          customInput={React.cloneElement(<CustomButton />)}
+          className={styles.input}
           onChange={date => handleDate(date)}
         />
-        <BiCalendarHeart size={20} className={c(styles.styleIconInputDate)} />
+        <BiCalendarHeart aria-hidden size={20} className={c(styles.styleIconInputDate)} />
       </div>
       {inputStore && <div className={styles.errorMessage}>{t(`${inputStore.errorMessage}`)}</div>}
     </>
@@ -60,7 +42,7 @@ const InputDate = ({ label, handleDateChange, value, size, inputStore }) => {
 
 InputDate.propTypes = {
   handleDateChange: PropTypes.func.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date)]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
   size: PropTypes.number,
   inputStore: PropTypes.instanceOf(InputStore),
