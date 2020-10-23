@@ -29,7 +29,7 @@
   "lotsEnergy": "Tranquilo",
   "password": "Contraseña",
   "isRequired": "Este campo es requerido",
-  "isInvalid": "Field value is invalid",
+  "invalidDate": "The date is invalid",
   "repeatPassword": "Repetir contraseña",
   "adopter": "Adoptante",
   "vet": "Veterinario",
