@@ -78,6 +78,7 @@ const FormDogsMedicalReportsPets = ({ createPetStore }) => {
       <div className={styles.title}>{t('medicalInformation')}</div>
       <div className={styles.colums}>
         <InputDate
+          isEdit
           label={t('labelVisitVet')}
           handleDateChange={handleDateChange}
           value={getLastVisitVet}

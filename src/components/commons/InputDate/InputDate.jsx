@@ -8,15 +8,20 @@ import Label from 'components/commons/Label'
 import { BiCalendarHeart } from 'react-icons/bi'
 import InputStore from 'stores/InputStore'
 import { useTranslation } from 'react-i18next'
+import * as moment from 'moment'
 import styles from './inputDate.scss'
 
-const InputDate = ({ label, handleDateChange, value, size, inputStore }) => {
-  const [selectedDate, handleDate] = useState(null)
+const InputDate = ({ label, handleDateChange, value, size, inputStore, isEdit }) => {
+  const [selectedDate, setSelectedDate] = useState(value || null)
   const { t } = useTranslation()
 
   useEffect(() => {
     handleDateChange(selectedDate)
   }, [selectedDate])
+
+  const noValueSelected = selectedDate === null
+  const formattedValue = noValueSelected && value ? moment(value).format('L') : null
+  const showValue = isEdit ? formattedValue : null
 
   return (
     <>
@@ -26,12 +31,12 @@ const InputDate = ({ label, handleDateChange, value, size, inputStore }) => {
         style={{ width: size ? `${size} px` : '100%' }}
       >
         <DatePicker
+          value={showValue}
           showYearDropdown
-          isClearable
           dateFormat="dd/MM/yyyy"
-          selected={value}
+          selected={selectedDate}
           className={styles.input}
-          onChange={date => handleDate(date)}
+          onChange={date => setSelectedDate(date)}
         />
         <BiCalendarHeart aria-hidden size={20} className={c(styles.styleIconInputDate)} />
       </div>
@@ -42,7 +47,7 @@ const InputDate = ({ label, handleDateChange, value, size, inputStore }) => {
 
 InputDate.propTypes = {
   handleDateChange: PropTypes.func.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date)]),
   label: PropTypes.string,
   size: PropTypes.number,
   inputStore: PropTypes.instanceOf(InputStore),

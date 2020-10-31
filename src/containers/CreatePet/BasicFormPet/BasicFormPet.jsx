@@ -166,6 +166,7 @@ const BasicFormPet = ({ createPetStore, inputUploadImageStore }) => {
       </div>
       <div className={styles.colums}>
         <InputDate
+          isEdit
           label={t('birthdate')}
           inputStore={birthday}
           handleDateChange={handleDateBirthday}
